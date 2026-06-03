@@ -20,17 +20,17 @@ const geminiSchema = {
                 },
                 difficulty: {
                     type: "string",
-                    description: "Easy, Medium or Hard"
+                    description: "Given question is Easy, Medium or Hard"
                 },
-                logic: {
+                topic: {
                     type: "string",
-                    description: "Numbered steps SEPARATED BY \\n newline. Example: '1. pehla step\\n2. doosra step\\n3. teesra step'"
+                    description: "Topic like Binary Search, Arrays etc"
                 }
             }
         },
         logic: {
             type: "string",
-            description: "Logic used in solving"
+            description: "Numbered steps SEPARATED BY \\n newline. Example: '1. pehla step\\n2. doosra step\\n3. teesra step'"
         },
         edgeCases: {
             type: "string",
