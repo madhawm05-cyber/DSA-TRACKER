@@ -22,9 +22,9 @@ const geminiSchema = {
                     type: "string",
                     description: "Easy, Medium or Hard"
                 },
-                topic: {
+                logic: {
                     type: "string",
-                    description: "Topic like Binary Search, Arrays etc"
+                    description: "Numbered steps SEPARATED BY \\n newline. Example: '1. pehla step\\n2. doosra step\\n3. teesra step'"
                 }
             }
         },
@@ -64,6 +64,10 @@ async function analyzeCode(code, questionNo) {
 You are a DSA expert teacher who explains in simple Hindi/English mix.
 Analyze this LeetCode solution and generate structured notes.
 
+IMPORTANT FORMATTING RULES:
+- logic field mein har step \\n se separate karo
+- har step number se shuru ho jaise "1. step\\n2. step"
+
 Question Number: ${questionNo}
 Code: ${code}
 
@@ -81,7 +85,7 @@ Generate detailed notes with logic, edge cases, mistakes, complexity.
 
     const parsed = JSON.parse(response.text);
     console.log(parsed);
-    
+
     return parsed;
 
 }
