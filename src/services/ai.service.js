@@ -20,7 +20,8 @@ const geminiSchema = {
                 },
                 difficulty: {
                     type: "string",
-                    description: "Given question is Easy, Medium or Hard"
+                    enum: ["Easy", "Medium", "Hard"],
+                    description: "Return ONLY one of these exact values: Easy, Medium, Hard"
                 },
                 topic: {
                     type: "string",
@@ -29,15 +30,24 @@ const geminiSchema = {
             }
         },
         logic: {
-            type: "string",
-            description: "Numbered steps SEPARATED BY \\n newline. Example: '1. pehla step\\n2. doosra step\\n3. teesra step'"
+            type: "array",
+            items: {
+                type: "string"
+            },
+            description: "Step-by-step logic. Each array item should contain exactly one step."
         },
         edgeCases: {
-            type: "string",
+            type: "array",
+            items: {
+                type: "string"
+            },
             description: "Edge cases"
         },
         optimisation: {
-            type: "string",
+            type: "array",
+            items: {
+                type: "string"
+            },
             description: "Optimisation tips"
         },
         timeComplexity: {
@@ -49,7 +59,10 @@ const geminiSchema = {
             description: "Space complexity"
         },
         mistakes: {
-            type: "string",
+            type: "array",
+            items: {
+                type: "string"
+            },
             description: "Common mistakes"
         },
         concept: {
@@ -63,10 +76,6 @@ async function analyzeCode(code, questionNo) {
     const prompt = `
 You are a DSA expert teacher who explains in simple Hindi/English mix.
 Analyze this LeetCode solution and generate structured notes.
-
-IMPORTANT FORMATTING RULES:
-- logic field mein har step \\n se separate karo
-- har step number se shuru ho jaise "1. step\\n2. step"
 
 Question Number: ${questionNo}
 Code: ${code}

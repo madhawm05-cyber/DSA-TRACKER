@@ -16,20 +16,20 @@ const notesSchema = new mongoose.Schema({
             required: true
         },
         topic: {
-            type: String,
+            type: Array,
             required: true
         },
 
     },
     logic: {
-        type: String,
+        type: Array,
         required: true
     },
     edgeCases: {
-        type: String,
+        type: Array,
     },
     optimisation: {
-        type: String
+        type: Array
     },
     timeComplexity: {
         type: String,
@@ -40,7 +40,7 @@ const notesSchema = new mongoose.Schema({
         required: true
     },
     mistakes: {
-        type:String
+        type: Array
     },
     concept: {
         type: String,
